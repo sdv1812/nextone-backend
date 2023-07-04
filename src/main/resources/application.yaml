@@ -1,1 +1,3 @@
 exception.trace.capture: false
+storage:
+  location: /Users/sanskar/Documents/nextone-questionbank
