@@ -64,6 +64,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
 
     private ResponseEntity<ErrorResponse> createErrorResponse(HttpStatus httpStatus, String message, Exception ex) {
+        ex.printStackTrace();
         ErrorResponse errorResponse = new ErrorResponse(
                 httpStatus.value(),
                 httpStatus.getReasonPhrase(),
