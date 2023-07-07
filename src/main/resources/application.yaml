@@ -1,3 +1,9 @@
 exception.trace.capture: false
 storage:
   location: /Users/sanskar/Documents/nextone-questionbank
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: nextoneDb
