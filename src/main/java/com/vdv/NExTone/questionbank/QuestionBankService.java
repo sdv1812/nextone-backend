@@ -15,4 +15,8 @@ public class QuestionBankService {
     public QuestionBank saveOrUpdateQuestionBank(QuestionBank questionBank) {
         return new QuestionBank(questionRepository.saveAll(questionBank.questions()));
     }
+
+    public QuestionBank getQuestionBank() {
+        return new QuestionBank(questionRepository.findAll());
+    }
 }

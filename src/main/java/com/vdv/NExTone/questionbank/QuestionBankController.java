@@ -5,10 +5,7 @@ import com.vdv.NExTone.exception.InvalidFileException;
 import com.vdv.NExTone.questionbank.model.QuestionBank;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -46,6 +43,11 @@ public class QuestionBankController {
 //        System.out.println(new Gson().toJson(questionBank));
         QuestionBank savedQuestionBank = questionBankService.saveOrUpdateQuestionBank(questionBank);
         return ResponseEntity.ok(savedQuestionBank);
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<QuestionBank> getQuestionBank() {
+        return ResponseEntity.ok(questionBankService.getQuestionBank());
     }
 
     private void checkFileValidity(MultipartFile file) {
