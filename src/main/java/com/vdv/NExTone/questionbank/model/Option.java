@@ -1,21 +1,24 @@
 package com.vdv.NExTone.questionbank.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Objects;
 
 public class Option {
-    private final Long optionId;
+    @Id
+    private final String id;
 
     private final String option;
 
     private String comment;
 
-    public Option(Long optionId, String option) {
-        this.optionId = optionId;
+    public Option(String id, String option) {
+        this.id = id;
         this.option = option;
     }
 
-    public Long getOptionId() {
-        return optionId;
+    public String getId() {
+        return id;
     }
 
     public String getOption() {
@@ -35,18 +38,18 @@ public class Option {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Option option1 = (Option) o;
-        return optionId.equals(option1.optionId) && option.equals(option1.option) && Objects.equals(comment, option1.comment);
+        return id.equals(option1.id) && option.equals(option1.option) && Objects.equals(comment, option1.comment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(optionId, option, comment);
+        return Objects.hash(id, option, comment);
     }
 
     @Override
     public String toString() {
         return "Option{" +
-                "optionId=" + optionId +
+                "optionId=" + id +
                 ", option='" + option + '\'' +
                 ", comment='" + comment + '\'' +
                 '}';

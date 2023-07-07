@@ -6,7 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class QuestionBankService {
 
+    private final QuestionRepository questionRepository;
+
+    public QuestionBankService(QuestionRepository questionRepository) {
+        this.questionRepository = questionRepository;
+    }
+
     public QuestionBank saveOrUpdateQuestionBank(QuestionBank questionBank) {
-        return null;
+        return new QuestionBank(questionRepository.saveAll(questionBank.questions()));
     }
 }

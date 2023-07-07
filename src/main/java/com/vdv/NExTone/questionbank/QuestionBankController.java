@@ -25,9 +25,12 @@ public class QuestionBankController {
     private final QuestionBankFileProcessor questionBankExcelProcessor;
 
     private final QuestionBankFileProcessor questionBankCsvProcessor;
-    public QuestionBankController(QuestionBankExcelProcessor questionBankExcelProcessor, QuestionBankCsvProcessor questionBankCsvProcessor) {
+
+    private final QuestionBankService questionBankService;
+    public QuestionBankController(QuestionBankExcelProcessor questionBankExcelProcessor, QuestionBankCsvProcessor questionBankCsvProcessor, QuestionBankService questionBankService) {
         this.questionBankExcelProcessor = questionBankExcelProcessor;
         this.questionBankCsvProcessor = questionBankCsvProcessor;
+        this.questionBankService = questionBankService;
     }
 
     @PostMapping(value = "/upload", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -41,8 +44,8 @@ public class QuestionBankController {
             questionBank = questionBankCsvProcessor.processQuestionBankFile(file);
 
 //        System.out.println(new Gson().toJson(questionBank));
-
-        return ResponseEntity.ok(questionBank);
+        QuestionBank savedQuestionBank = questionBankService.saveOrUpdateQuestionBank(questionBank);
+        return ResponseEntity.ok(savedQuestionBank);
     }
 
     private void checkFileValidity(MultipartFile file) {
