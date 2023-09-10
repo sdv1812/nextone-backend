@@ -33,6 +33,10 @@ dependencies {
 	implementation("org.apache.poi:poi:5.2.3")
 	implementation("org.apache.poi:poi-ooxml:5.2.3")
 	implementation("org.apache.poi:poi-ooxml-lite:5.2.3")
+
+	//swagger
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+
 //	implementation("com.google.code.gson:gson:2.10.1")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")

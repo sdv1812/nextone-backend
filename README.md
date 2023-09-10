@@ -59,4 +59,13 @@ a. Once the cloning process is complete, you should see a new folder in your cur
 
 b. You have successfully cloned the repository from GitHub to your local machine.
 
+## Running the application
+via command line: 
 
+```shell
+gradlew bootRun
+```
+
+###  Swagger
+After running the application, checkout the swagger at:
+http://localhost:8080/swagger-ui/index.html#/
