@@ -55,6 +55,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         return createErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
     }
 
+    @ExceptionHandler(value = EntityNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleEntityNotFoundException(EntityNotFoundException ex) {
+        return createErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+    }
+
 
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
@@ -64,7 +70,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
 
     private ResponseEntity<ErrorResponse> createErrorResponse(HttpStatus httpStatus, String message, Exception ex) {
-        ex.printStackTrace();
+        if (captureTrace) {
+            ex.printStackTrace();
+        }
         ErrorResponse errorResponse = new ErrorResponse(
                 httpStatus.value(),
                 httpStatus.getReasonPhrase(),

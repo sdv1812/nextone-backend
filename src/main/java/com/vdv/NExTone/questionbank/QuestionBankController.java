@@ -2,6 +2,7 @@ package com.vdv.NExTone.questionbank;
 
 //import com.google.gson.Gson;
 import com.vdv.NExTone.exception.InvalidFileException;
+import com.vdv.NExTone.questionbank.model.Question;
 import com.vdv.NExTone.questionbank.model.QuestionBank;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -48,6 +49,15 @@ public class QuestionBankController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<QuestionBank> getQuestionBank() {
         return ResponseEntity.ok(questionBankService.getQuestionBank());
+    }
+    @GetMapping(value = "question/{questionId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Question> getQuestion(@PathVariable("questionId") String questionId) {
+        return ResponseEntity.ok(questionBankService.getQuestion(questionId));
+    }
+
+    @GetMapping(value = "question/number/{questionNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Question> getQuestionByNumber(@PathVariable("questionNumber") Integer questionNumber) {
+        return ResponseEntity.ok(questionBankService.getQuestionByNumber(questionNumber));
     }
 
     private void checkFileValidity(MultipartFile file) {
