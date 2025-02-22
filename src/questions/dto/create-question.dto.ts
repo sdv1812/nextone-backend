@@ -1,8 +1,13 @@
 export class CreateQuestionDto {
+  readonly id: string;
   readonly text: string;
-  readonly options: { id: string; text: string }[];
-  readonly correctOptions: string[];
+  readonly optionA: string;
+  readonly optionB: string;
+  readonly optionC: string;
+  readonly optionD: string;
+  readonly correctOption: string;
   readonly explanation?: string;
   readonly category?: string;
   readonly difficulty?: string;
+  readonly createdAt?: Date;
 }

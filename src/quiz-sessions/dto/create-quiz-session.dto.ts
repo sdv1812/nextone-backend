@@ -2,8 +2,8 @@ export class CreateQuizSessionDto {
   readonly userId: string;
   readonly questionResponses: {
     questionId: string;
-    selectedOptions: string[];
-    correctOptions: string[];
+    selectedOptions: string;
+    correctOptions: string;
     isCorrect: boolean;
     answeredAt: Date;
   }[];

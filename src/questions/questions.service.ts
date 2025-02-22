@@ -11,13 +11,41 @@ export class QuestionsService {
     @InjectModel(Question.name) private questionModel: Model<Question>,
   ) {}
 
-  async create(createQuestionDto: CreateQuestionDto): Promise<Question> {
+  async create(
+    createQuestionDto: CreateQuestionDto,
+  ): Promise<CreateQuestionDto> {
     const createdQuestion = new this.questionModel(createQuestionDto);
-    return createdQuestion.save();
+    const question = await createdQuestion.save();
+    return {
+      id: question._id.toString(),
+      text: question.text,
+      optionA: question.optionA,
+      optionB: question.optionB,
+      optionC: question.optionC,
+      optionD: question.optionD,
+      correctOption: question.correctOption,
+      explanation: question.explanation,
+      category: question.category,
+      difficulty: question.difficulty,
+      createdAt: question.createdAt,
+    };
   }
 
-  async findAll(): Promise<Question[]> {
-    return this.questionModel.find().exec();
+  async findAll(): Promise<CreateQuestionDto[]> {
+    const questions = await this.questionModel.find().exec();
+    return questions.map((question) => ({
+      id: question._id.toString(),
+      text: question.text,
+      optionA: question.optionA,
+      optionB: question.optionB,
+      optionC: question.optionC,
+      optionD: question.optionD,
+      correctOption: question.correctOption,
+      explanation: question.explanation,
+      category: question.category,
+      difficulty: question.difficulty,
+      createdAt: question.createdAt,
+    }));
   }
 
   async findOne(id: string): Promise<Question | null> {

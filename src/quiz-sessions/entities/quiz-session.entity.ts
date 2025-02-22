@@ -12,8 +12,8 @@ export class QuizSession {
     type: [
       {
         questionId: { type: Types.ObjectId, ref: 'Question', required: true },
-        selectedOptions: [{ type: String }],
-        correctOptions: [{ type: String }],
+        selectedOptions: { type: String },
+        correctOptions: { type: String },
         isCorrect: { type: Boolean },
         answeredAt: { type: Date },
       },
@@ -22,8 +22,8 @@ export class QuizSession {
   })
   questionResponses: {
     questionId: Types.ObjectId;
-    selectedOptions: string[];
-    correctOptions: string[];
+    selectedOptions: string;
+    correctOptions: string;
     isCorrect: boolean;
     answeredAt: Date;
   }[];

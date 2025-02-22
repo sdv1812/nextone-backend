@@ -8,20 +8,32 @@ export class Question {
   @Prop({ required: true })
   text: string;
 
-  @Prop({ type: [{ id: String, text: String }], required: true })
-  options: { id: string; text: string }[];
+  @Prop({ type: String, required: true })
+  optionA: string;
 
-  @Prop({ type: [String], required: true })
-  correctOptions: string[];
+  @Prop({ type: String, required: true })
+  optionB: string;
+
+  @Prop({ type: String, required: true })
+  optionC: string;
+
+  @Prop({ type: String, required: true })
+  optionD: string;
+
+  @Prop({ type: String, required: true })
+  correctOption: string;
 
   @Prop()
-  explanation: string;
+  explanation?: string;
 
-  @Prop()
+  @Prop({ required: true })
   category: string;
 
   @Prop()
-  difficulty: string;
+  difficulty?: string;
+
+  @Prop()
+  createdAt?: Date;
 }
 
 export const QuestionSchema = SchemaFactory.createForClass(Question);
