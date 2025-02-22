@@ -1,4 +1,3 @@
-// src/quiz-sessions/quiz-sessions.controller.ts
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { QuizSessionsService } from './quiz-sessions.service';
 import { CreateQuizSessionDto } from './dto/create-quiz-session.dto';

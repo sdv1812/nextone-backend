@@ -97,3 +97,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+## To run docker with environment variable
+
+docker run -d -p 3002:3002 -e MONGO_URI="mongodb+srv://admin:<password>@nextonedb-cluster.uxcq4.mongodb.net/?retryWrites=true&w=majority&appName=nextonedb-cluster" 371671650909.dkr.ecr.ap-southeast-2.amazonaws.com/nextone

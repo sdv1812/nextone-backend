@@ -1,4 +1,3 @@
-// src/quiz-sessions/dto/create-quiz-session.dto.ts
 export class CreateQuizSessionDto {
   readonly userId: string;
   readonly questionResponses: {
