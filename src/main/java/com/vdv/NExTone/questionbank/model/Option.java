@@ -38,7 +38,7 @@ public class Option {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Option option1 = (Option) o;
-        return id.equals(option1.id) && option.equals(option1.option) && Objects.equals(comment, option1.comment);
+        return Objects.equals(id, option1.id) && Objects.equals(option, option1.option) && Objects.equals(comment, option1.comment);
     }
 
     @Override

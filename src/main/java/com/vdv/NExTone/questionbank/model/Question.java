@@ -18,7 +18,7 @@ public record Question(
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Question question = (Question) o;
-        return id.equals(question.id) && questionNumber.equals(question.questionNumber);
+        return Objects.equals(id, question.id) && Objects.equals(questionNumber, question.questionNumber);
     }
 
     @Override
