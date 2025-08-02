@@ -1,13 +1,8 @@
 package com.vdv.NExTone.exception;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
 public class ErrorResponse {
     private final LocalDate timestamp;
     private final Integer status;
@@ -17,13 +12,21 @@ public class ErrorResponse {
     private String path;
     private List<ValidationError> errors;
 
-    @Getter
     public static class ValidationError {
         private final String field;
         private final String message;
+
         public ValidationError(String field, String message) {
             this.field = field;
             this.message = message;
+        }
+
+        public String getField() {
+            return field;
+        }
+
+        public String getMessage() {
+            return message;
         }
     }
 
@@ -37,6 +40,43 @@ public class ErrorResponse {
         this.message = message;
     }
 
+    public LocalDate getTimestamp() {
+        return timestamp;
+    }
 
+    public Integer getStatus() {
+        return status;
+    }
 
+    public String getError() {
+        return error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getStackTrace() {
+        return stackTrace;
+    }
+
+    public void setStackTrace(String stackTrace) {
+        this.stackTrace = stackTrace;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public List<ValidationError> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(List<ValidationError> errors) {
+        this.errors = errors;
+    }
 }
