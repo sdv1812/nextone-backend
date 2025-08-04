@@ -6,9 +6,13 @@ import { QuizSessionsModule } from './quiz-sessions/quiz-sessions.module';
 
 @Module({
   imports: [
-    // Adjust the MongoDB connection string as needed
     MongooseModule.forRoot(
-      process.env.MONGO_URI || 'mongodb://host.docker.internal:27017/nextoneDb',
+      process.env.MONGO_URI ||
+        'mongodb+srv://nextonedb-cluster.uxcq4.mongodb.net/?retryWrites=true&w=majority&appName=nextonedb-cluster',
+      {
+        user: process.env.MONGO_USER || 'admin',
+        pass: process.env.MONGO_PASSWORD || 'admin',
+      },
     ),
     QuestionsModule,
     UsersModule,

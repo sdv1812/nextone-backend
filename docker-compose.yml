@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 371671650909.dkr.ecr.ap-southeast-2.amazonaws.com/nextone/service:latest
+    ports:
+      - "3002:3002"
+    environment:
+      MONGO_URI: "mongodb+srv://nextonedb-cluster.uxcq4.mongodb.net/?retryWrites=true&w=majority&appName=nextonedb-cluster"
+      MONGO_USER: "admin"
+      MONGO_PASSWORD: "admin"
