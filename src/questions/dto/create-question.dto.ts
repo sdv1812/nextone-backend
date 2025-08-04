@@ -1,7 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateQuestionDto {
-  @ApiProperty({ example: 'q1' })
   readonly id: string;
 
   @ApiProperty({ example: 'What is the capital of France?' })
@@ -22,8 +21,22 @@ export class CreateQuestionDto {
   @ApiProperty({ example: 'C' })
   readonly correctOption: string;
 
-  @ApiProperty({ example: 'Paris is the capital of France.' })
+  @ApiProperty({
+    example: 'Paris is the capital of France. See {img1} for a map.',
+  })
   readonly explanation?: string;
+
+  @ApiProperty({
+    example: [
+      'https://s3.amazonaws.com/bucket/image1.jpg',
+      'https://s3.amazonaws.com/bucket/image2.jpg',
+    ],
+    description:
+      'S3 URLs for images used in the explanation. Use {img1}, {img2}, etc. as placeholders in the explanation text.',
+    required: false,
+    type: [String],
+  })
+  readonly explanationImages?: string[];
 
   @ApiProperty({ example: 'Geography' })
   readonly category?: string;
@@ -31,6 +44,5 @@ export class CreateQuestionDto {
   @ApiProperty({ example: 'Easy' })
   readonly difficulty?: string;
 
-  @ApiProperty({ example: '2025-08-03T00:00:00.000Z' })
   readonly createdAt?: Date;
 }

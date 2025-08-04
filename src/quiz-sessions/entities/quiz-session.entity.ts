@@ -5,7 +5,7 @@ export type QuizSessionDocument = QuizSession & Document;
 
 @Schema({ timestamps: true })
 export class QuizSession {
-  @Prop({ type: Types.ObjectId, ref: 'User', required: true })
+  @Prop({ type: () => Types.ObjectId, ref: 'User', required: true })
   userId: Types.ObjectId;
 
   @Prop({

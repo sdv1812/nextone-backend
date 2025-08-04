@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { QuestionsController } from './questions.controller';
 import { QuestionsService } from './questions.service';
 import { Question, QuestionSchema } from './entities/question.entity';
+import { S3Service } from '../common/s3.service';
 
 @Module({
   imports: [
@@ -12,6 +13,6 @@ import { Question, QuestionSchema } from './entities/question.entity';
     ]),
   ],
   controllers: [QuestionsController],
-  providers: [QuestionsService],
+  providers: [QuestionsService, S3Service],
 })
 export class QuestionsModule {}
