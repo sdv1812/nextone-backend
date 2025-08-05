@@ -38,6 +38,18 @@ export class CreateQuestionDto {
   })
   readonly explanationImages?: string[];
 
+  @ApiProperty({
+    example: [
+      'https://s3.amazonaws.com/bucket/question1.jpg',
+      'https://s3.amazonaws.com/bucket/question2.jpg',
+    ],
+    description:
+      'S3 URLs for images related to the question. Use {img1}, {img2}, etc. as placeholders in the question text.',
+    required: false,
+    type: [String],
+  })
+  readonly questionImages?: string[];
+
   @ApiProperty({ example: 'Geography' })
   readonly category?: string;
 

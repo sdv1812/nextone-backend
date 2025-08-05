@@ -29,6 +29,9 @@ export class Question {
   @Prop({ type: [String] })
   explanationImages?: string[];
 
+  @Prop({ type: [String] })
+  questionImages?: string[];
+
   @Prop({ required: true })
   category: string;
 
