@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: 371671650909.dkr.ecr.ap-southeast-2.amazonaws.com/nextone/service:latest
+    image: 371671650909.dkr.ecr.ap-south-1.amazonaws.com/nextone/service
     ports:
       - "3002:3002"
     environment:
