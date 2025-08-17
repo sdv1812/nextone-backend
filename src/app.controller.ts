@@ -12,4 +12,10 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('/health')
+  @ApiOperation({ summary: 'Health check endpoint for load balancer' })
+  healthCheck() {
+    return { status: 'ok' };
+  }
 }
